@@ -1,0 +1,56 @@
+import edu.duke.*;
+import org.apache.commons.csv.*;
+/**
+ *
+ * @moshhe
+ * @v0.0.1
+ */
+public class WordPlay{
+    public boolean isVowel(char ch){
+        ch = Character.toUpperCase(ch);
+        if(ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U'){
+            return true;
+        }
+        return false;
+    }
+
+    public String replaceVowels(String phrase, char ch){
+        StringBuilder newString = new StringBuilder(phrase);
+        for(int i = 0; i < phrase.length(); i++){
+            if(isVowel(newString.charAt(i))){
+                newString.setCharAt(i, ch);
+            }
+        }
+        return newString.toString();
+    }
+
+    public void testReplaceVowels(){
+        System.out.println(replaceVowels("How is Color Wars going", '~'));
+        System.out.println(replaceVowels("How is Color Wars going", '*'));
+        System.out.println(replaceVowels("How is Color Wars going", '+'));
+    }
+
+    public void testIsVowel(){
+        System.out.println("isVowel('F') should return false: " + isVowel('F'));
+        System.out.println("isVowel('a') should return true: " + isVowel('a'));
+    }
+
+    public String emphasize(String phrase, char ch1, char ch2){
+        StringBuilder newString = new StringBuilder(phrase);
+        for(int i = 0; i < phrase.length(); i++){
+            if(isVowel(newString.charAt(i))){
+            if(i%2==0){
+                newString.setCharAt(i, '+');
+            }
+            else{
+                newString.setCharAt(i, '*');
+            }
+        }
+    }
+        return newString.toString();
+    }
+
+    public void testEmphasize(){
+        System.out.println(emphasize("How is Color Wars going", '*', '+'));
+    }
+}
